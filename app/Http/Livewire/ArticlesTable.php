@@ -134,6 +134,4 @@ class ArticlesTable extends Component
             // $this->resetFields();
         }
     }
-
-
 }
