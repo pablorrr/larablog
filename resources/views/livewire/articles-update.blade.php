@@ -8,7 +8,7 @@
     </div>
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="articleContent">Content:</label>
-        <textarea class="form-control" id="ArticleContent" wire:model="content" placeholder="Enter Content"></textarea>
+        <textarea class="form-control" id="articleContent" wire:model="content" placeholder="Enter Content"></textarea>
 
     </div>
     <div class="d-grid gap-2">

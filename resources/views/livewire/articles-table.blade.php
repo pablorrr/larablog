@@ -4,6 +4,8 @@
 
         @if($updateArticle)
             @include('livewire.articles-update')
+        @else
+            @include('livewire.articles-create')
         @endif
     </div>
 

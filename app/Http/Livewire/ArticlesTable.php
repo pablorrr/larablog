@@ -13,6 +13,7 @@ class ArticlesTable extends Component
 
 
     public $title, $content, $article_id;
+    public $author_id;
     public $search = '';
     public $perPage = 25;
     public $sortField = 'id';
@@ -26,6 +27,12 @@ class ArticlesTable extends Component
          'description'=>'required'
      ];*/
 
+    public function getAuthorId()
+    {
+        $this->author_id = auth()->user()->id;
+        return $this->author_id;
+
+    }
 
     public function render()
     {
@@ -92,6 +99,41 @@ class ArticlesTable extends Component
     /**
      * store methods when article is added
      */
+
+    public function store()
+    {
+        // Validate Form Request
+        //  $this->validate();
+
+        try {
+            // Create Category
+            Article::create([
+                'author_id' => $this->getAuthorId(),
+                'title' => $this->title,
+                'content' => $this->content
+            ]);
+
+            // Set Flash Message
+
+            $this->dispatchBrowserEvent('alert', [
+                'type' => 'success',
+                'message' => "Category Created Successfully!!"
+            ]);
+
+            // Reset Form Fields After Creating Category
+            //  $this->resetFields();
+        } catch (\Exception $e) {
+            // Set Flash Message
+
+            $this->dispatchBrowserEvent('alert', [
+                'type' => 'error',
+                'message' => "Something goes wrong while creating category!!"
+            ]);
+
+            // Reset Form Fields After Creating Category
+            // $this->resetFields();
+        }
+    }
 
 
 }
