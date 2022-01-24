@@ -4,6 +4,11 @@
         <p>niesprawny mechanizm wyszukiwania,dodoac mozliwosc edycji, poprzez chceckbox jak delete</p>
 
     </div>
+
+    @if($updateArticle)
+        @include('livewire.articles-update')
+    @endif
+
     <div class="w-full flex pb-10">
 
         <div class="w-3/6 mx-1">
@@ -39,6 +44,9 @@
                 </svg>
             </div>
         </div>
+
+
+
         <div class="w-1/6 relative mx-1">
             <button wire:click="deleteArticles"
                     class="block appearance-none w-full bg-red-500 border border-gray-200 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
@@ -68,6 +76,10 @@
                     </td>
                     <td class="border px-4 py-2">{{ $article->title }}</td>
                     <td class="border px-4 py-2">{{ $article->content }}</td>
+                    <td class="border px-4 py-2">
+                        <button wire:click="edit({{$article->id}})" class="btn btn-primary btn-sm">Edit</button>
+                    </td>
+
 
                 </tr>
             @endforeach
