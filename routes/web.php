@@ -52,8 +52,7 @@ Route::group([
     'as' => 'admin.',
 ], function () {
 
-    //Livewire
-    Route::get('/livewire/articles',ArticlesTable::class)->name('livewire.articles');
+
 
     Route::get('/articles', [AdminArticlesController::class, 'index'])->name('articles');
 
