@@ -1,13 +1,13 @@
 <div>
     <div class="w-full flex pb-10">
 
-        <p>niesprawny mechanizm wyszukiwania,dodoac mozliwosc edycji, poprzez chceckbox jak delete</p>
 
+        @if($updateArticle)
+            @include('livewire.articles-update')
+        @endif
     </div>
 
-    @if($updateArticle)
-        @include('livewire.articles-update')
-    @endif
+
 
     <div class="w-full flex pb-10">
 
