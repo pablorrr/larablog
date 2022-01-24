@@ -1,22 +1,12 @@
 <div>
     <div class="w-full flex pb-10">
 
-
         @if($updateArticle)
             @include('livewire.articles-update')
-            {{--  @else
-                    @include('livewire.articles-create')--}}
         @endif
     </div>
 
     <div class="w-full flex pb-10">
-
-        <div class="w-1/6 relative mx-1">
-            <button wire:click="addCreateForm"
-                    class="block appearance-none bg-red-500 border border-gray  focus:outline-none focus:bg-white focus:border-gray">
-                Add Article
-            </button>
-        </div>
 
         @if($createFormFlag)
             <div class="w-1/6 relative mx-1">
@@ -63,13 +53,22 @@
             </div>
         </div>
 
+        <div class="w-1/6 relative mx-1">
+            @if($createFormFlag == false)
+                <button wire:click="addCreateForm"
+                        class="block appearance-none w-full bg-red-500 border border-gray-200 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                    Add Article
+                </button>
+            @endif
 
+        </div>
         <div class="w-1/6 relative mx-1">
             <button wire:click="deleteArticles"
                     class="block appearance-none w-full bg-red-500 border border-gray-200 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 Delete
             </button>
         </div>
+
     </div>
     @if($articles->isNotEmpty())
         <table class="table-auto w-full mb-6">

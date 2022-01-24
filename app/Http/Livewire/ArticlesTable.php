@@ -41,6 +41,7 @@ class ArticlesTable extends Component
     {
         $this->updateArticle = false;
         $this->resetFields();
+        $this->createFormFlag = false;
     }
 
     public function resetFields()
@@ -156,6 +157,7 @@ class ArticlesTable extends Component
 
             // Reset Form Fields After Creating Category
             $this->resetFields();
+            $this->createFormFlag = false;
         } catch (\Exception $e) {
             // Set Flash Message
 
@@ -166,6 +168,7 @@ class ArticlesTable extends Component
 
             // Reset Form Fields After Creating Category
             $this->resetFields();
+            $this->createFormFlag = false;
         }
     }
 }
