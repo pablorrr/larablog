@@ -20,13 +20,15 @@ class ArticlesTable extends Component
     public $sortAsc = true;
     public $selected = [];
     public $updateArticle = false;
+    public $createFormFlag = false;
 
     // Validation Rules
 
-      protected $rules = [
-         'title'=>'required',
-         'content'=>'required'
-     ];
+    protected $rules = [
+        'title' => 'required',
+        'content' => 'required'
+    ];
+    public $display;
 
     public function getAuthorId()
     {
@@ -41,11 +43,28 @@ class ArticlesTable extends Component
         $this->resetFields();
     }
 
-    public function resetFields(){
+    public function resetFields()
+    {
         $this->title = '';
         $this->content = '';
     }
 
+//extract(get_object_vars($this));//https://stackoverflow.com/questions/4994711/this-keyword-and-compact-function
+//return compact('result');
+
+    public function addCreateForm()
+    {
+        $this->createFormFlag = true;
+
+       // return view('livewire.articles-table', compact('createFormFlag'));
+
+
+
+        return view('livewire.articles-table', [
+            'createFormFlag' => $this->createFormFlag,
+
+        ]);
+    }
 
     public function render()
     {
@@ -53,6 +72,7 @@ class ArticlesTable extends Component
             'articles' => Article::search($this->search)
                 ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->simplePaginate($this->perPage),
+
         ]);
     }
 
@@ -75,7 +95,7 @@ class ArticlesTable extends Component
     {
 
         // Validate request
-           $this->validate();
+        $this->validate();
 
 
         try {
@@ -100,7 +120,7 @@ class ArticlesTable extends Component
                 'type' => 'error',
                 'message' => "Something goes wrong while updating category!!"
             ]);
-             $this->cancel();
+            $this->cancel();
         }
     }
 
@@ -117,7 +137,7 @@ class ArticlesTable extends Component
     public function store()
     {
         // Validate Form Request
-          $this->validate();
+        $this->validate();
 
         try {
             // Create Category
@@ -135,7 +155,7 @@ class ArticlesTable extends Component
             ]);
 
             // Reset Form Fields After Creating Category
-              $this->resetFields();
+            $this->resetFields();
         } catch (\Exception $e) {
             // Set Flash Message
 
@@ -145,7 +165,7 @@ class ArticlesTable extends Component
             ]);
 
             // Reset Form Fields After Creating Category
-             $this->resetFields();
+            $this->resetFields();
         }
     }
 }

@@ -4,9 +4,27 @@
 
         @if($updateArticle)
             @include('livewire.articles-update')
-        @else
-            @include('livewire.articles-create')
+            {{--  @else
+                    @include('livewire.articles-create')--}}
         @endif
+    </div>
+
+    <div class="w-full flex pb-10">
+
+        <div class="w-1/6 relative mx-1">
+            <button wire:click="addCreateForm"
+                    class="block appearance-none bg-red-500 border border-gray  focus:outline-none focus:bg-white focus:border-gray">
+                Add Article
+            </button>
+        </div>
+
+        @if($createFormFlag)
+            <div class="w-1/6 relative mx-1">
+                @include('livewire.articles-create')
+            </div>
+
+        @endif
+
     </div>
 
     <div class="w-full flex pb-10">
@@ -46,7 +64,6 @@
         </div>
 
 
-
         <div class="w-1/6 relative mx-1">
             <button wire:click="deleteArticles"
                     class="block appearance-none w-full bg-red-500 border border-gray-200 text-white py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
@@ -77,7 +94,9 @@
                     <td class="border px-4 py-2">{{ $article->title }}</td>
                     <td class="border px-4 py-2">{{ $article->content }}</td>
                     <td class="border px-4 py-2">
-                        <button wire:click="edit({{$article->id}})" class="bg-blue-500 hover:bg-blue-700 text-white">Edit</button>
+                        <button wire:click="edit({{$article->id}})" class="bg-blue-500 hover:bg-blue-700 text-white">
+                            Edit
+                        </button>
                     </td>
                 </tr>
             @endforeach
