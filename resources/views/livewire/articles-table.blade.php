@@ -9,8 +9,6 @@
         @endif
     </div>
 
-
-
     <div class="w-full flex pb-10">
 
         <div class="w-3/6 mx-1">
@@ -79,10 +77,8 @@
                     <td class="border px-4 py-2">{{ $article->title }}</td>
                     <td class="border px-4 py-2">{{ $article->content }}</td>
                     <td class="border px-4 py-2">
-                        <button wire:click="edit({{$article->id}})" class="btn btn-primary btn-sm">Edit</button>
+                        <button wire:click="edit({{$article->id}})" class="bg-blue-500 hover:bg-blue-700 text-white">Edit</button>
                     </td>
-
-
                 </tr>
             @endforeach
             </tbody>

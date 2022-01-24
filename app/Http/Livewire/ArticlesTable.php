@@ -22,10 +22,11 @@ class ArticlesTable extends Component
     public $updateArticle = false;
 
     // Validation Rules
-    /* protected $rules = [
-         'name'=>'required',
-         'description'=>'required'
-     ];*/
+
+      protected $rules = [
+         'title'=>'required',
+         'content'=>'required'
+     ];
 
     public function getAuthorId()
     {
@@ -33,6 +34,18 @@ class ArticlesTable extends Component
         return $this->author_id;
 
     }
+
+    public function cancel()
+    {
+        $this->updateArticle = false;
+        $this->resetFields();
+    }
+
+    public function resetFields(){
+        $this->title = '';
+        $this->content = '';
+    }
+
 
     public function render()
     {
@@ -62,7 +75,8 @@ class ArticlesTable extends Component
     {
 
         // Validate request
-        //    $this->validate();
+           $this->validate();
+
 
         try {
 
@@ -78,7 +92,7 @@ class ArticlesTable extends Component
                 'message' => "Article Updated Successfully!!"
             ]);
 
-            // $this->cancel();
+            $this->cancel();
         } catch (\Exception $e) {
 
 
@@ -86,7 +100,7 @@ class ArticlesTable extends Component
                 'type' => 'error',
                 'message' => "Something goes wrong while updating category!!"
             ]);
-            //  $this->cancel();
+             $this->cancel();
         }
     }
 
@@ -103,7 +117,7 @@ class ArticlesTable extends Component
     public function store()
     {
         // Validate Form Request
-        //  $this->validate();
+          $this->validate();
 
         try {
             // Create Category
@@ -121,7 +135,7 @@ class ArticlesTable extends Component
             ]);
 
             // Reset Form Fields After Creating Category
-            //  $this->resetFields();
+              $this->resetFields();
         } catch (\Exception $e) {
             // Set Flash Message
 
@@ -131,7 +145,7 @@ class ArticlesTable extends Component
             ]);
 
             // Reset Form Fields After Creating Category
-            // $this->resetFields();
+             $this->resetFields();
         }
     }
 }
