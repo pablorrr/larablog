@@ -109,8 +109,6 @@
     <div class="container text-center">
         <h3 class="text-center text-capitalize">@yield('title')</h3>
     </div>
-
-
 </div>
 
 <div class="container-fluid">
