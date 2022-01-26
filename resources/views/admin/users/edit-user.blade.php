@@ -11,7 +11,7 @@
         <div class="col-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('admin.user.update', $user->id)}}" method="POST">
+                    <form action="{{route('admin.users.update', $user->id)}}" method="POST">
 
                         @csrf
                         <input type="hidden" name="_method" value="PUT">

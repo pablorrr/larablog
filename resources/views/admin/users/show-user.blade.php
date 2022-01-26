@@ -34,7 +34,7 @@
 
 
                         <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}"
+                            <a href="{{ route('admin.users.edit', $user->id) }}"
                                class="btn btn-info btn-sm">Edytuj</a>
                         </td>
 

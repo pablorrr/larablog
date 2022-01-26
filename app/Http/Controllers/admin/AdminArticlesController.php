@@ -34,7 +34,7 @@ class AdminArticlesController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('admin/articles', compact('articles'));
+        return view('admin.articles.index', compact('articles'));
 
     }
 
@@ -48,7 +48,7 @@ class AdminArticlesController extends Controller
         //pobranie z DB
         $article = Article::findOrFail($article_id);
 
-        return view('admin/edit-article', compact('article'));
+        return view('admin.articles.edit-article', compact('article'));
     }
 
     public function update($article_id, UpdateArticleRequest $request) {
@@ -58,7 +58,7 @@ class AdminArticlesController extends Controller
         $article->content = $request->input('content');
         $article->save();
 
-        return redirect()->route('admin.articles')->with([
+        return redirect()->route('admin.articles.index')->with([
             'status' => [
                 'type' => 'success',
                 'content' => 'Zapisano zmiany',
@@ -78,7 +78,7 @@ class AdminArticlesController extends Controller
     public function create()
     {
         $user = $this->get_user();
-        return view('admin/add-article', compact('user'));
+        return view('admin.articles.add-article', compact('user'));
     }
 
 
@@ -94,7 +94,7 @@ class AdminArticlesController extends Controller
 
         $article->save();
 
-        return redirect()->route('admin.articles')->with([
+        return redirect()->route('admin.articles.index')->with([
             'status' => [
                 'type' => 'success',
                 'content' => 'Artykuł został dodany',
@@ -119,16 +119,12 @@ class AdminArticlesController extends Controller
 
           $article->delete();
 
-          return redirect()->route('admin.articles')->with([
+          return redirect()->route('admin.articles.index')->with([
                   'status' => [
                       'type' => 'success',
                       'content' => 'Artykuł został usunięty',
                   ]
               ]);
 
-
-
       }
-
 }
-

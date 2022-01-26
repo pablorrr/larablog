@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,15 +31,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-
-
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 //Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('check.admin.role'); - SPOSB PRZYPISANIA MIDDLEWARE DO TRASY
 //Route::get('/dashboard', [HomeController::class, 'index'])->middleware();
 //uwaga jest to zaposa obowiazujacy w lar 8 we wczesniejszych ver jest inaczej
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 //Route::get('/articles','App\Http\Controllers\ArticleController@index')->name('articles'); - to samodzialanie co wyzej
-
 
 
 /**
@@ -53,49 +50,56 @@ Route::group([
     'as' => 'admin.',
 ], function () {
 
+    Route::group([
+        'prefix' => 'users',
+        'as' => 'users.',
+    ], function () {//uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
+        //inaczej sa bledy w wyysylanniu formularza
+        //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
+        //store jako metoda przetwazania danych
+        //scilse powiazaanie w redirect  back
+
+        //user CRUD
+        //add
+        Route::get('/add-user', [AdminUserController::class, 'createUser'])->name('create');
+        Route::post('/users', [AdminUserController::class, 'storeUser'])->name('store');
+
+        //update
+        Route::get('/{user}/edit', [AdminUserController::class, 'editUser'])->name('edit');
+        Route::put('/{user}', [AdminUserController::class, 'updateUser'])->name('update');
+
+        //delete
+        Route::get('/{user}/destroy', [AdminUserController::class, 'destroyUser'])->name('destroy');
+
+        //show
+        Route::get('/user/{user}', [AdminUserController::class, 'showUser'])->name('show');
+    });
 
 
+    Route::group([
+        'prefix' => 'articles',
+        'as' => 'articles.',
+    ], function () {
+
+        //articles
+        Route::get('/', [AdminArticlesController::class, 'index'])->name('index');
 
 
-    //autor CRUD
+        //article CRUD
+        //add
+        Route::get('/add-article', [AdminArticlesController::class, 'create'])->name('create');
+        Route::post('/article', [AdminArticlesController::class, 'store'])->name('store');
 
-    //uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
-    //inaczej sa bledy w wyysylanniu formularza
-    //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
-    //store jako metoda przetwazania danych
-    //scilse powiazaanie w redirect  back
+        //update
+        Route::get('/{article}/edit', [AdminArticlesController::class, 'edit'])->name('edit');
+        Route::put('/{article}', [AdminArticlesController::class, 'update'])->name('update');
 
-    //user CRUD
-    //add
-   Route::get('/add-user', [AdminUserController::class, 'createUser'])->name('user.create');
-    Route::post('/users', [AdminUserController::class, 'storeUser'])->name('user.store');
-
-    //update
-    Route::get('/{user}/edit', [AdminUserController::class, 'editUser'])->name('user.edit');
-    Route::put('/{user}', [AdminUserController::class, 'updateUser'])->name('user.update');
-
-    //delete
-    Route::get('/{user}/destroy', [AdminUserController::class, 'destroyUser'])->name('user.destroy');
-
-    //show
-    Route::get('/user/{user}', [AdminUserController::class,'showUser'])->name('user.show');
+        //delete
+        Route::get('/{article}/destroy', [AdminArticlesController::class, 'destroy'])->name('destroy');
 
 
-
-    //articles
-    Route::get('/articles', [AdminArticlesController::class, 'index'])->name('articles');
+    });
 
 
-    //article CRUD
-    //add
-    Route::get('/add-article', [AdminArticlesController::class, 'create'])->name('articles.create');
-    Route::post('/articles', [AdminArticlesController::class, 'store'])->name('articles.store');
-
-    //update
-    Route::get('/{article}/edit', [AdminArticlesController::class, 'edit'])->name('articles.edit');
-    Route::put('/{article}', [AdminArticlesController::class, 'update'])->name('articles.update');
-
-    //delete
-    Route::get('/{article}/destroy', [AdminArticlesController::class, 'destroy'])->name('articles.destroy');
 });
 

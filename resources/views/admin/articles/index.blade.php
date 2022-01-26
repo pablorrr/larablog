@@ -31,7 +31,7 @@
             @foreach($articles as $article)
                 <tr>
                     <td>
-                        <a href="{{route('admin.user.show',$article->user->id)}}">{{$article->user->name}}</a>
+                        <a href="{{route('admin.users.show',$article->user->id)}}">{{$article->user->name}}</a>
                     </td>
                     <td>{{$article->title}}</td>
                     <td>{{$article->content}}</td>

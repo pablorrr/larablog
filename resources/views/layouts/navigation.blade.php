@@ -9,7 +9,6 @@
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600"/>
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -24,7 +23,7 @@
                 @if(Auth::check())
                     @if ((Auth::user()->role =='admin') || (Auth::user()->role =='redactor'))
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('admin.articles')" :active="request()->routeIs('admin.articles')">
+                            <x-nav-link :href="route('admin.articles.index')" :active="request()->routeIs('admin.articles.index')">
                                 {{ __('Admin') }}
                             </x-nav-link>
                         </div>
