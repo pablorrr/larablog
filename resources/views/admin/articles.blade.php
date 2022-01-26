@@ -35,15 +35,14 @@
                     </td>
                     <td>{{$article->title}}</td>
                     <td>{{$article->content}}</td>
-
-                    @if ($article::count() != 0)
-                        <td>
-                            <a href="{{ route('admin.articles.edit', $article->id) }}" class="btn btn-info btn-sm">Edytuj</a>
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.articles.destroy', $article->id) }}" class="btn btn-danger btn-sm">Usuń</a>
-                        </td>
-                    @endif
+                    <td>
+                        <a href="{{ route('admin.articles.edit', $article->id) }}"
+                           class="btn btn-info btn-sm">Edytuj</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.articles.destroy', $article->id) }}"
+                           class="btn btn-danger btn-sm">Usuń</a>
+                    </td>
 
 
                     {{--  <td><a href="{{route('admin.book.rent',[$singleBook->id,auth()->user()->id])}}"

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserRepository extends BaseRepository
 {
@@ -12,20 +13,32 @@ class UserRepository extends BaseRepository
         $this->model = $model;
     }
 
-    public function getAllAdmins()
+    /**  public function getAllAdmins()
+     * {
+     * return $this->model->where('role', 'admin')->orederBy('name', 'asc')->get();
+     * }
+     *
+     * public function getAllRedactors()
+     * {
+     * return $this->model->where('role', 'redactor')->orederBy('name', 'asc')->get();
+     * }
+     *
+     *
+     * public function getAllReaders()
+     * {
+     * return $this->model->where('role', 'reader')->orederBy('name', 'asc')->get();
+     * }
+     */
+
+    public function edit($id)
     {
-        return $this->model->where('role', 'admin')->orederBy('name', 'asc')->get();
+        return $this->model->findOrFail($id);
     }
 
-    public function getAllRedactors()
+//$users = User::select('name')->distinct()->get();
+    public function getUserRole()
     {
-        return $this->model->where('role', 'redactor')->orederBy('name', 'asc')->get();
-    }
-
-
-    public function getAllReaders()
-    {
-        return $this->model->where('role', 'reader')->orederBy('name', 'asc')->get();
+        return  DB::table('users')->select('role')->distinct()->get()->all();
     }
 
 

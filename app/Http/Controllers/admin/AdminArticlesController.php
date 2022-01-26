@@ -38,6 +38,12 @@ class AdminArticlesController extends Controller
 
     }
 
+    /**
+     * @param $article_id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     *
+     * czesc dot edycji
+     */
     public function edit($article_id) {
         //pobranie z DB
         $article = Article::findOrFail($article_id);
@@ -60,7 +66,15 @@ class AdminArticlesController extends Controller
         ]);
     }
 
+    /**
+     * koniec czewsci edycji
+     */
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     *
+     * czesc dotyczaca dodawania usera
+     */
     public function create()
     {
         $user = $this->get_user();
@@ -88,6 +102,15 @@ class AdminArticlesController extends Controller
         ]);
 
     }
+
+    /**
+     * koniec czesci dodoania
+     */
+
+    /**
+     * @param $article_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
 
       public function destroy($article_id) {
 

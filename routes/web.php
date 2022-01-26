@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,7 +30,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+
 
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -44,7 +45,7 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 /**
  *  ADMIN ROUTE
  */
-
+//uwaga CRUD NIE MOZE WYSTEPOWAC  DLA DWOCH MODELI NA TEJ SAMIEJ GRUPIE TRASYY!!! NALEZY TWORZY PODGRUPY TRAS DLA KAZDEGO MODELU OSOSBNO
 Route::group([
 
     'middleware' => ['auth', 'check.admin.role'],
@@ -54,15 +55,35 @@ Route::group([
 
 
 
-    Route::get('/articles', [AdminArticlesController::class, 'index'])->name('articles');
+
 
     //autor CRUD
 
     //uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
     //inaczej sa bledy w wyysylanniu formularza
-    //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adrespodktorym bedzie obslugiwane zadanie
-    //store jakometoda przetwazania danych
-    //scilsepowiazaanie w redirect  back
+    //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
+    //store jako metoda przetwazania danych
+    //scilse powiazaanie w redirect  back
+
+    //user CRUD
+    //add
+   Route::get('/add-user', [AdminUserController::class, 'createUser'])->name('user.create');
+    Route::post('/users', [AdminUserController::class, 'storeUser'])->name('user.store');
+
+    //update
+    Route::get('/{user}/edit', [AdminUserController::class, 'editUser'])->name('user.edit');
+    Route::put('/{user}', [AdminUserController::class, 'updateUser'])->name('user.update');
+
+    //delete
+    Route::get('/{user}/destroy', [AdminUserController::class, 'destroyUser'])->name('user.destroy');
+
+    //show
+    Route::get('/user/{user}', [AdminUserController::class,'showUser'])->name('user.show');
+
+
+
+    //articles
+    Route::get('/articles', [AdminArticlesController::class, 'index'])->name('articles');
 
 
     //article CRUD
@@ -76,9 +97,5 @@ Route::group([
 
     //delete
     Route::get('/{article}/destroy', [AdminArticlesController::class, 'destroy'])->name('articles.destroy');
-
-    //show
-     Route::get('/user/{user}', [AdminUserController::class,'showUser'])->name('user.show');
-
 });
 
