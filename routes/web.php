@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminArticlesController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\RegistrationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 
@@ -61,7 +62,9 @@ Route::group([
 
         //user CRUD
         //add
-        Route::get('/add-user', [AdminUserController::class, 'createUser'])->name('create');
+
+        Route::get('/register', [RegistrationController::class,'create']);
+
         Route::post('/users', [AdminUserController::class, 'storeUser'])->name('store');
 
         //update
