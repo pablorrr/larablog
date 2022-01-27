@@ -63,7 +63,7 @@ Route::group([
         //user CRUD
         //add
 
-        Route::get('/register', [RegistrationController::class,'create']);
+
 
         Route::post('/users', [AdminUserController::class, 'storeUser'])->name('store');
 
