@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\TestQueueEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,8 @@ require __DIR__ . '/auth.php';
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('sending-queue-emails', [TestQueueEmails::class,'sendTestEmails']);
 
 //breeze
 Route::get('/dashboard', function () {
