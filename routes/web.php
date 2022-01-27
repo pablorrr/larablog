@@ -4,7 +4,7 @@ use App\Http\Controllers\admin\AdminArticlesController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\ArticlesTable;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,12 +30,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+/*Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 //Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('check.admin.role'); - SPOSB PRZYPISANIA MIDDLEWARE DO TRASY
 //Route::get('/dashboard', [HomeController::class, 'index'])->middleware();
 //uwaga jest to zaposa obowiazujacy w lar 8 we wczesniejszych ver jest inaczej
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+
 //Route::get('/articles','App\Http\Controllers\ArticleController@index')->name('articles'); - to samodzialanie co wyzej
 
 
