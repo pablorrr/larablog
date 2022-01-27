@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\admin\AdminArticlesController;
 use App\Http\Controllers\admin\AdminUserController;
-use App\Http\Controllers\admin\RegistrationController;
+
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 
