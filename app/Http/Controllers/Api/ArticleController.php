@@ -14,7 +14,15 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all()->toJson();
-        return  $articles;
+        return $articles;
 
     }
+
+    public function show($article_id)
+    {
+        $article = Article::findOrFail($article_id)->toJson();
+        return $article;
+    }
+
+
 }
