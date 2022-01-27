@@ -32,10 +32,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-/*Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+
+
 //Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('check.admin.role'); - SPOSB PRZYPISANIA MIDDLEWARE DO TRASY
 //Route::get('/dashboard', [HomeController::class, 'index'])->middleware();
-//uwaga jest to zaposa obowiazujacy w lar 8 we wczesniejszych ver jest inaczej
+
 
 //Route::get('/articles','App\Http\Controllers\ArticleController@index')->name('articles'); - to samodzialanie co wyzej
 
@@ -54,11 +56,13 @@ Route::group([
     Route::group([
         'prefix' => 'users',
         'as' => 'users.',
-    ], function () {//uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
+    ], function () {
+
+        /**uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
         //inaczej sa bledy w wyysylanniu formularza
         //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
         //store jako metoda przetwazania danych
-        //scilse powiazaanie w redirect  back
+        //scilse powiazaanie w redirect  back*/
 
         //user CRUD
         //add

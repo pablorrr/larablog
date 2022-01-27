@@ -18,13 +18,22 @@ class Article extends Model
         return $this->belongsTo(User::class,'author_id');
 
     }
+//https://onlinewebtutorblog.com/eloquent-accessors-and-mutators-in-laravel/
+//konwersja danych wejsciowych - tytuł artykulu - MUTATOR
 
-    //livewire
-    public static function search($search)
+    public function setTitleAttribute($value)
     {
-        return empty($search) ? static::query()
-            : static::where('id', 'like', '%' . $search . '%')
-                ->orWhere('title', 'like', '%' . $search . '%')
-                ->orWhere('content', 'like', '%' . $search . '%');
+        $this->attributes['title'] = strtolower($value);
     }
+
+
+//akcesor
+//transformacja danych wykjsciowych
+
+    public function getContentAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+
 }
