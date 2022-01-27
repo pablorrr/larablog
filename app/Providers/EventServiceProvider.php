@@ -17,7 +17,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-        ],
+        ],//rejestracja detektrora -listenera https://dev.to/kingsconsult/laravel-8-events-and-listeners-with-practical-example-9m7
+        LoginHistory::class => [ //klasa zdarzen
+            StoreUserLoginHistory::class, //detektor
+        ]
     ];
 
     /**
