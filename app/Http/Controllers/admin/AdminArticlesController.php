@@ -144,7 +144,7 @@ class AdminArticlesController extends Controller
 
       }
 
-      public function addPhoto($article_id, AddArticlePhoto $request): \Illuminate\Http\RedirectResponse
+      public function addPhoto($article_id, AddArticlePhoto $request)
     {
         $photo = $request->file('photo');
 

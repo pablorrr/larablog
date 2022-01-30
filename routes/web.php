@@ -21,17 +21,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-require __DIR__ . '/auth.php';
+//require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-//breeze
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+//Route::get('/dashboard', function () {
+  //  return view('dashboard');
+//})->name('dashboard');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 
@@ -49,7 +53,7 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 //uwaga CRUD NIE MOZE WYSTEPOWAC  DLA DWOCH MODELI NA TEJ SAMIEJ GRUPIE TRASYY!!! NALEZY TWORZY PODGRUPY TRAS DLA KAZDEGO MODELU OSOSBNO
 Route::group([
 
-    'middleware' => ['auth', 'check.admin.role'],
+   'middleware' => ['auth', 'check.admin.role'],
     'prefix' => 'admin',
     'as' => 'admin.',
 ], function () {
@@ -112,3 +116,11 @@ Route::group([
 
 
 });
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
