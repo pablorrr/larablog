@@ -75,7 +75,7 @@
                                             <img src="{{ asset('upload/articles/' . $photo->photo) }}" width="100">
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.articles.deletePhoto', [$product->id, $photo->id]) }}"
+                                            <a href="{{ route('admin.articles.deletePhoto', [$article->id, $photo->id]) }}"
                                                class="btn btn-danger btn-sm">Usuń</a>
                                         </td>
                                     </tr>
