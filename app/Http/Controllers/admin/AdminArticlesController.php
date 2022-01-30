@@ -6,9 +6,11 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Mail\SendMailable;
 use App\Models\Article;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminArticlesController extends Controller
 {   //todo: napisac setter dla usera lub getter  i ustalic  wlascowsocklasy user
@@ -93,6 +95,7 @@ class AdminArticlesController extends Controller
 
 
         $article->save();
+        Mail::to($request->user())->send(new SendMailable($article));
 
         return redirect()->route('admin.articles.index')->with([
             'status' => [

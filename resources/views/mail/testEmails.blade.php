@@ -1,1 +1,8 @@
-<p> My mailing queues testing</p>
+
+
+        autor:{{$article->user->name}}
+        tytuł: {{ $article->title}}
+        tresc: {{ $article->content}}
+
+
+

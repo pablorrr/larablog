@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sending-queue-emails', [TestQueueEmails::class,'sendTestEmails']);
+//Route::get('sending-queue-emails', [TestQueueEmails::class,'sendTestEmails']);
 
 //breeze
 Route::get('/dashboard', function () {
