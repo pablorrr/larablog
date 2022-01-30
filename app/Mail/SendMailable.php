@@ -33,10 +33,10 @@ class SendMailable extends Mailable
      * @return $this
      */
     public function build()
-    {//hello@example.com
+    {
         return $this->from('hello@example.com','testowe')
             ->subject($this->subject)
-            ->view('mail.testEmails');
+            ->view('mail.last.article');
 
     }
 }

@@ -95,6 +95,7 @@ class AdminArticlesController extends Controller
 
 
         $article->save();
+
         Mail::to($request->user())->send(new SendMailable($article));
 
         return redirect()->route('admin.articles.index')->with([

@@ -39,14 +39,6 @@
                         </td>
 
 
-                       {{-- if(Auth::check())
-                            @if( auth()->user()->id !=$user->id)
-                            <td>
-                                <a href="{{ route('admin.user.destroy', $user->id) }}"
-                                   class="btn btn-danger btn-sm">Usuń</a>
-                            </td>
-                            @endif
-                        @endif --}}
 
                     </tr>
 
