@@ -45,7 +45,6 @@
                         <a href="{{ route('admin.articles.destroy', $article->id) }}"
                            class="btn btn-danger btn-sm">Usuń</a>
                     </td>
-
                 </tr>
             @endforeach
             </tbody>
@@ -57,7 +56,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                {{--<p class="d-flex justify-content-center">Books count : {{$booksCount}} </p>--}}
+
             </div>
         </div>
     </div>
