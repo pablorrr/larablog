@@ -20,6 +20,7 @@
                         <th scope="col">author</th>
                         <th scope="col">title</th>
                         <th scope="col">content</th>
+                        <th scope="col">image</th>
 
                     </tr>
                     </thead>
@@ -28,6 +29,15 @@
                         <td scope="row">{{$article->user->name}}</td>
                         <td>{{$article->title}}</td>
                         <td>{{$article->content}}</td>
+                        <td>
+                            @if ($article->photos->count())
+                                <a href="{{ asset('upload/articles/' . $article->firstPhoto()->photo) }}"
+                                   target="_blank">
+                                    <img src="{{ asset('upload/articles/' . $article->firstPhoto()->photo) }}">
+                                </a>
+                            @endif
+                        </td>
+
                     </tr>
                     </tbody>
                 </table>
