@@ -28,14 +28,12 @@ Route::get('/', function () {
 });
 
 
-
 //breeze
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-
 
 
 //Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware('check.admin.role'); - SPOSB PRZYPISANIA MIDDLEWARE DO TRASY
@@ -62,14 +60,13 @@ Route::group([
     ], function () {
 
         /**uwage nazwt tras musz byc rozne niz name do tych tras gdzie linki sa identyczne!! np admin/authors
-        //inaczej sa bledy w wyysylanniu formularza
-        //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
-        //store jako metoda przetwazania danych
-        //scilse powiazaanie w redirect  back*/
+         * //inaczej sa bledy w wyysylanniu formularza
+         * //uwga wymagana zgodnosc ze specyfikacja  uzywanego fromyulrza- jest to adres pod ktorym bedzie obslugiwane zadanie
+         * //store jako metoda przetwazania danych
+         * //scilse powiazaanie w redirect  back*/
 
         //user CRUD
         //add
-
 
 
         Route::post('/users', [AdminUserController::class, 'storeUser'])->name('store');
@@ -93,8 +90,8 @@ Route::group([
 
         //articles
         Route::get('/', [AdminArticlesController::class, 'index'])->name('index');
-
-
+        //show single article
+        Route::get('/article/{article}', [AdminArticlesController::class, 'show'])->name('show');
         //article CRUD
         //add
         Route::get('/add-article', [AdminArticlesController::class, 'create'])->name('create');

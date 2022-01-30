@@ -40,6 +40,16 @@ class AdminArticlesController extends Controller
 
     }
 
+
+    public function show($article_id)//DI
+    {
+
+        $article = Article::findOrFail($article_id);
+
+        return view('admin.articles.show-article', compact('article'));
+    }
+
+
     /**
      * @param $article_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View

@@ -33,7 +33,9 @@
                     <td>
                         <a href="{{route('admin.users.show',$article->user->id)}}">{{$article->user->name}}</a>
                     </td>
-                    <td>{{$article->title}}</td>
+                    <td>
+                        <a href="{{route('admin.articles.show',$article->id)}}">{{$article->title}}</a>
+                    </td>
                     <td>{{$article->content}}</td>
                     <td>
                         <a href="{{ route('admin.articles.edit', $article->id) }}"
@@ -43,11 +45,6 @@
                         <a href="{{ route('admin.articles.destroy', $article->id) }}"
                            class="btn btn-danger btn-sm">Usuń</a>
                     </td>
-
-
-                    {{--  <td><a href="{{route('admin.book.rent',[$singleBook->id,auth()->user()->id])}}"
-                              class="btn btn-primary btn-sm">{{$singleBook->status}}</a>
-                       </td>--}}
 
                 </tr>
             @endforeach
