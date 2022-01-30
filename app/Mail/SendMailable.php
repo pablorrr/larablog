@@ -36,7 +36,7 @@ class SendMailable extends Mailable
     {
         return $this->from('hello@example.com','testowe')
             ->subject($this->subject)
-            ->view('mail.last.article');
+            ->view('mail.last-article');
 
     }
 }

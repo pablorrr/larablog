@@ -83,8 +83,6 @@ class AdminArticlesController extends Controller
         return view('admin.articles.add-article', compact('user'));
     }
 
-
-
     public function store(AddArticleRequest $request)
     {
         $article = new Article;
