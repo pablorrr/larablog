@@ -39,7 +39,10 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- photo edit -->
     <div class="row mb-3">
         <div class="col-5">
@@ -59,7 +62,7 @@
                                 <span class="text-danger">{{ $errors->first('photo') }}</span>
                             @endif
                         </div>
-
+                        <br>
                         <div class="mb-4">
                             <button type="submit" class="btn btn-primary">Dodaj zdjęcie</button>
                         </div>

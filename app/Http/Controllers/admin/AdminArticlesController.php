@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddArticlePhoto;
 use App\Http\Requests\AddArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Mail\SendMailable;
@@ -143,20 +144,19 @@ class AdminArticlesController extends Controller
 
       }
 
-
-
-    public function addPhoto($article_id, AddArticlePhoto $request) {
+      public function addPhoto($article_id, AddArticlePhoto $request): \Illuminate\Http\RedirectResponse
+    {
         $photo = $request->file('photo');
-        //$photo->getClientOriginalExtension()- pobiera rozszerzenie pliku(string return)
+
         $filename = uniqid() . '.' . $photo->getClientOriginalExtension();
 
         $article = Article::findOrFail($article_id);
 
-        //njprwd zapis nazwy photo do bazy danych
+
         $article->photos()->create([
             'photo' => $filename,
         ]);
-        //njprwd zapis photo
+
         Storage::disk('public')->putFileAs(
             'articles/',
             $photo,
@@ -186,7 +186,4 @@ class AdminArticlesController extends Controller
             ]
         ]);
     }
-
-
-
 }
