@@ -105,6 +105,10 @@ Route::group([
         Route::get('/{article}/destroy', [AdminArticlesController::class, 'destroy'])->name('destroy');
 
 
+        //photo handle
+        Route::post('/{article}/add-photo', [AdminArticlesController::class, 'addPhoto'])->name('addPhoto');
+        Route::get('/{article}/delete-photo/{photo}', [AdminArticlesController::class, 'deletePhoto'])->name('deletePhoto');
+
     });
 
 

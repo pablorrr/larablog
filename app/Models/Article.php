@@ -14,13 +14,13 @@ class Article extends Model
 
     public function user()
     {//uwaga dzieki zapisowi ponizej jest mozliwe stsosowanie tego w  widoku $article->author->name
-        // - uwaga!! podczas wprowadzania modyfikacjaz formulrarza toprestalo dzilac
+
         return $this->belongsTo(User::class, 'author_id');
 
     }
 
     public function photos()
-    {
+    {// todo:dopisac foreign key jak powyzej
         return $this->hasMany(ArticlePhotos::class);
     }
 
