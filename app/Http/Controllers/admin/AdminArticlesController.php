@@ -9,8 +9,10 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Mail\SendMailable;
 use App\Models\Article;
 
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class AdminArticlesController extends Controller
 {   //todo: napisac setter dla usera lub getter  i ustalic  wlascowsocklasy user
@@ -139,4 +141,51 @@ class AdminArticlesController extends Controller
               ]);
 
       }
+
+
+
+    public function addPhoto($article_id, AddArticlePhoto $request) {
+        $photo = $request->file('photo');
+        //$photo->getClientOriginalExtension()- pobiera rozszerzenie pliku(string return)
+        $filename = uniqid() . '.' . $photo->getClientOriginalExtension();
+
+        $article = Article::findOrFail($article_id);
+
+        //njprwd zapis nazwy photo do bazy danych
+        $article->photos()->create([
+            'photo' => $filename,
+        ]);
+        //njprwd zapis photo
+        Storage::disk('public')->putFileAs(
+            'articles/',
+            $photo,
+            $filename
+        );
+
+        return redirect()->route('admin.articles.index')->with([
+            'status' => [
+                'type' => 'success',
+                'content' => 'Zdjęcie zostało dodane',
+            ]
+        ]);
+    }
+
+    public function deletePhoto($article_id, $photo_id) {
+        //wyszukiwanie w DB ZADANEGO ZDJECIA PO ID
+        $photo = ArticlePhotos::where('article_id', $article_id)->findOrFail($photo_id);
+
+        File::delete('upload/articles/' . $photo->photo);
+        //usuneicie z dysku
+        $photo->delete();
+
+        return redirect()->route('admin.articles.index')->with([
+            'status' => [
+                'type' => 'success',
+                'content' => 'Zdjęcie zostało usunięte',
+            ]
+        ]);
+    }
+
+
+
 }
