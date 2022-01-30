@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateArticleRequest;
 use App\Mail\SendMailable;
 use App\Models\Article;
 
+use App\Models\ArticlePhotos;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;

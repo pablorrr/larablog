@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ArticlePhotos extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'photo',
+    ];
+
 }
