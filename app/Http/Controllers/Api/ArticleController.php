@@ -27,11 +27,14 @@ class ArticleController extends Controller
 
     //API TEST TRZEBA DOPISAC API DO URL , odniesienie do web.api route
 
-    public function deleteArticle ($id) {
-        if(Article::where('id', $id)->exists()) {
-            $book = Article::find($id);
-            $book->delete();
+    public function delete($article_id)
+    {
 
+
+        if (Article::where('id', $article_id)->exists()) {
+
+            $article = Article::all()->find($article_id);
+            $article->delete();
             return response()->json([
                 "message" => "records deleted"
             ], 202);
