@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminArticlesController;
 use App\Http\Controllers\admin\AdminUserController;
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\TestQueueEmails;
@@ -124,3 +125,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+/**
+ * CRUD RESOURCE TEST EXAMPLE
+ */
+
+Route::resource('blogs', BlogController::class);
+
+
+
