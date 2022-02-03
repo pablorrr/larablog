@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TestQueueEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,23 +23,14 @@ use App\Http\Controllers\UserAuthController;
 |
 */
 
-//Route::get('user/session',[AdminUserController::class,'showUserWithSession']);
-Route::post('user', [UserAuthController::class, 'userLogin']);
-Route::view("login", 'login');
-Route::view("profile", 'profile');
 
+/**
+ * https://www.youtube.com/watch?v=2XUOWzoLcXM
+ */
 
+Route::get('/session/get', [SessionController::class, 'getSessionData'])->name('session.get');
 
-Route::get('login', function () {
-    if (session()->has('user')) {
-        session()->pull('user');
-    }
-    return redirect('profile');
-});
+Route::get('/session/set', [SessionController::class, 'storeSessionData'])->name('session.set');
 
-Route::get('logout', function () {
-    if (session()->has('user')) {
-        session()->pull('user');
-    }
-   return redirect('login');
-});
+Route::get('/session/remove', [SessionController::class, 'deleteSessionData'])->name('session.remove');
+
