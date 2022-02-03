@@ -1,3 +1,4 @@
 <div>
-    <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
+    <h1>hey</h1>
+    <h3>hey 2  {{$name}} </h3><!-- czytanie zmiennej neame zawartej w welcome.blade linia 437-->
 </div>
