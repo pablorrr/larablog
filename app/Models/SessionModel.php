@@ -10,4 +10,6 @@ class SessionModel extends Model
     use HasFactory;
 
     protected $table = "sessions";
+    protected $fillable  = ['name'];
+    public $timestamps = false;
 }

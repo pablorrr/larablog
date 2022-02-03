@@ -71,14 +71,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        /**
-         * crete sessions exercise purposes
-         */
-
         Session::push('user', [
             'name' => $data['name'],
             'email' => $data['email'],
-
         ]);
 
         return $user;
