@@ -21,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/collection',[ArticleController::class,'collectionTest']);
+
+Route::get('/collection/macro',[ArticleController::class,'collectionTestMacro']);
