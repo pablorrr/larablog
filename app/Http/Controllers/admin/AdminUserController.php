@@ -31,6 +31,12 @@ class AdminUserController extends Controller
      * edit
      */
 
+    public function showUserWithSession(Request $request, $id)
+    {
+        return $request->session()->all();
+    }
+
+
     public function editUser(UserRepository $userRepository, $user_id)//DI
     {
         $user = $userRepository->edit($user_id);
@@ -66,7 +72,6 @@ class AdminUserController extends Controller
     /**
      * end edit
      */
-
 
 
     /**
