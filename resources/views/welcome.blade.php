@@ -434,7 +434,7 @@
         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
     </div>
     <div class="text-center col-md-12">
-        <x-message name="content"/>
+        <x-message name="content"  :fruits="$fruits"/>
     </div>
 
 </div>

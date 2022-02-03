@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestQueueEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,9 +35,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//Route::get('/dashboard', function () {
-  //  return view('dashboard');
-//})->name('dashboard');
+
+
+/**
+ * componett exxercise
+ */
+Route::get('/get/component',[ProductController::class,'index'])->name('get.component');
+
+
+/**
+ * end componentn exercise
+ */
+
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 
