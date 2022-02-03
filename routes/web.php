@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestQueueEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::get('user/session',[AdminUserController::class,'showUserWithSession']);
-
+Route::post('user', [UserAuthController::class, 'userLogin']);
 Route::view("login", 'login');
+Route::view("profile", 'profile');
+
+
+
+Route::get('login', function () {
+    if (session()->has('user')) {
+        session()->pull('user');
+    }
+    return redirect('profile');
+});
+
+Route::get('logout', function () {
+    if (session()->has('user')) {
+        session()->pull('user');
+    }
+   return redirect('login');
+});
