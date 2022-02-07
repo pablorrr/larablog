@@ -11,9 +11,10 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index
     {
-          echo  'works';
+        $blogs = Blog::all();
+        return view('admin.articles.index', compact('blogs'));
     }
 
     /**
