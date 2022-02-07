@@ -58,15 +58,12 @@ class BlogController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $blog = Blog::find($id);
+
+        return view('show-post', compact('blog'));
     }
 
     /**
@@ -77,7 +74,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        //pobranie z DB
+        $blog = Blog::findOrFail($id);
+
+        return view('edit-post', compact('blog'));
     }
 
     /**
@@ -89,8 +89,19 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $blog->title = $request->input('title');
+        $blog->content = $request->input('content');
+        $blog->save();
+
+        return redirect()->route('blogs.index')->with([
+            'status' => [
+                'type' => 'success',
+                'content' => 'Zapisano zmiany',
+            ]
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
