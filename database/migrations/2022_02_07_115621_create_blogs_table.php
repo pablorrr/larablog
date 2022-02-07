@@ -1,10 +1,11 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoginHistoryTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,11 @@ class CreateLoginHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('login_history', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',100);
-            $table->string('email',200);
-            $table->timestamps();
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title', 24);
+            $table->text('content');
+
         });
     }
 
@@ -28,6 +29,9 @@ class CreateLoginHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login_history');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('blogs');
+        Schema::enableForeignKeyConstraints();
     }
 }
+
