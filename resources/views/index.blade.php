@@ -27,7 +27,7 @@
                            class="btn btn-info btn-sm">Edytuj</a>
                     </td>
                     <td>
-                        <a href="{{ route('blogs.destroy', $blog->id) }}"
+                        <a href="{{ route('blogs.delete.destroy', $blog->id) }}"
                            class="btn btn-danger btn-sm">Usuń</a>
                     </td>
 

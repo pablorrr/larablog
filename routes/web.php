@@ -43,7 +43,8 @@ Route::get('/dashboard', function () {
 
 Route::resource('blogs', BlogController::class);
 
-
+//delete- problem z p[roprawnym dzilaniem poprzez resource - koniecznosc zastosowania ososbnej customowej trasy
+Route::get('/{blog}/destroy', [BlogController::class, 'destroy'])->name('blogs.delete.destroy');
 
 /**
  *
