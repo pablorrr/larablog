@@ -53,6 +53,7 @@
         <div class="text-center col-md-12">
                 Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
             </div>
+        @yield('content')
 
     </div>
 
