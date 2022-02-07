@@ -111,6 +111,16 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blog::all()->find($id);
+
+
+        $blog->delete();
+
+        return redirect()->route('blogs.index')->with([
+            'status' => [
+                'type' => 'success',
+                'content' => 'Post został usunięty',
+            ]
+        ]);
     }
 }
