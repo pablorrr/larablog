@@ -9,6 +9,7 @@ class UserCollection extends ResourceCollection
 
     /**
      * Transform the resource collection into an array.
+     * resource colletction - zasoby koleckji przeksztalcanie zawrtosci danych z db na postac np tablicowa i reprezentowanir tego w widoku
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
