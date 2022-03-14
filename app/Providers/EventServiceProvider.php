@@ -8,7 +8,12 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
-{
+{/*ogolna charakterystyka
+ events to jest trechnologia ktoraumolizwia prowadzenie nalsuchu wylpywanie zdarzen
+a nastepnie umozliwienie szybszej pracyw tlepoprzez wproadzanie rownloglych  kilku operacji w tym samym
+czasie (hiperwatkowsc)
+
+*/
     /**
      * The event listener mappings for the application.
      *
