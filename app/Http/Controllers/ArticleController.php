@@ -26,6 +26,7 @@ class ArticleController extends Controller
     }
 
 //https://laravel.com/docs/8.x/collections
+//jest to sposb organizacji danych i ich prezentacji
     public function collectionTest()
     {
         $collection = collect(['taylor', 'abigail', null])->map(function ($name) {
