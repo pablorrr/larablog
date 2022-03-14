@@ -9,7 +9,7 @@ class BlogController extends Controller
 { //todo: stworezyc to w zupelnie nowymprojekcie io dodoac model z migracja
     /**
      * Display a listing of the resource.
-     *
+     *https://www.codegrepper.com/code-examples/php/php+artisan+make+route+resource
      * @return \Illuminate\Http\Response
      */
     public function index()
