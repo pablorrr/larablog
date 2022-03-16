@@ -31,9 +31,6 @@
             </button>
             <a class="navbar-brand" href="{!! url('/articles'); !!}">articles</a>
             <a class="navbar-brand" href="{!! url('/admin/articles/add-article'); !!}">add article</a>
-            @if (Route::has('register'))
-                <a href="{!! url('/register'); !!}" class="navbar-brand">add new user</a>
-            @endif
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">

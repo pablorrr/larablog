@@ -71,8 +71,6 @@ Route::group([
 
         //user CRUD
         //add
-
-
         Route::post('/users', [AdminUserController::class, 'storeUser'])->name('store');
 
         //update
