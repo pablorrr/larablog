@@ -24,6 +24,8 @@ Auth::routes();
 //require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
+
+    $test = 'test';
     return view('welcome');
 });
 
@@ -121,4 +123,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

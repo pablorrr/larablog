@@ -94,6 +94,7 @@ class AdminArticlesController extends Controller
     public function create()
     {
         $user = $this->get_user();
+        $test = 'test';
         return view('admin.articles.add-article', compact('user'));
     }
 
@@ -108,7 +109,7 @@ class AdminArticlesController extends Controller
 
         $article->save();
 
-        Mail::to($request->user())->send(new SendMailable($article));
+      //  Mail::to($request->user())->send(new SendMailable($article));
 
         return redirect()->route('admin.articles.index')->with([
             'status' => [
