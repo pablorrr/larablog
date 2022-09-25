@@ -53,6 +53,7 @@ Route::group([
 ], function () {
 
     //Livewire
+    //http://larablog.test/admin/livewire/articles
     Route::get('/livewire/articles',ArticlesTable::class)->name('livewire.articles');
 
     Route::get('/articles', [AdminArticlesController::class, 'index'])->name('articles');
@@ -82,4 +83,3 @@ Route::group([
      Route::get('/user/{user}', [AdminUserController::class,'showUser'])->name('user.show');
 
 });
-

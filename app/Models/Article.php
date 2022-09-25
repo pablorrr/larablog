@@ -14,7 +14,7 @@ class Article extends Model
 
     public function user()
     {//uwaga dzieki zapisowi ponizej jest mozliwe stsosowanie tego w  widoku $article->author->name
-        // - uwaga!! podczas wprowadzania modyfikacjaz formulrarza toprestalo dzilac
+        // - uwaga!! podczas wprowadzania modyfikacjaz formulrarza przestalo dzialac
         return $this->belongsTo(User::class,'author_id');
 
     }
