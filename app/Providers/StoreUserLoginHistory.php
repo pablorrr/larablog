@@ -35,9 +35,14 @@ class StoreUserLoginHistory
         $current_timestamp = Carbon::now()->toDateTimeString();
 
         $userinfo = $event->user;
-//zapisanie do tabeli login history danychomomencie logogowania
+        //zapisanie do tabeli login history danych w momencie logoowania
         $saveHistory = DB::table('login_history')->insert(
-            ['name' => $userinfo->name, 'email' => $userinfo->email, 'created_at' => $current_timestamp, 'updated_at' => $current_timestamp]
+            [
+                'name' => $userinfo->name,
+                'email' => $userinfo->email,
+                'created_at' => $current_timestamp,
+                'updated_at' => $current_timestamp
+            ]
         );
         return $saveHistory;
     }

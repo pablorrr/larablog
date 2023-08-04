@@ -11,7 +11,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 /**
- *  jest toklasa zdarzenia
+ *  jest to klasa zdarzenia
  */
 class LoginHistory
 {

@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {/*ogolna charakterystyka
- events to jest trechnologia ktoraumolizwia prowadzenie nalsuchu wylpywanie zdarzen
-a nastepnie umozliwienie szybszej pracyw tlepoprzez wproadzanie rownloglych  kilku operacji w tym samym
+ events to jest technologia ktora umozliwia prowadzenie nalsuchu wylapywanie zdarzen
+a nastepnie umozliwienie szybszej pracy w tle poprzez wprowadzanie rownleglych  kilku operacji w tym samym
 czasie (hiperwatkowsc)
 
 */
